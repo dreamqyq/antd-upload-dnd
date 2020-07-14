@@ -2,7 +2,6 @@ import React, { memo, useState } from "react";
 import UploadList from "antd/es/upload/UploadList";
 import { UploadFile } from 'antd/es/upload/interface';
 import { PlusOutlined } from "@ant-design/icons";
-import "./index.css";
 import { Upload, Modal } from "antd";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
@@ -58,12 +57,10 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...prop
   };
 
   const onDragEnd = ({ source, destination }: any) => {
-    console.log(source, destination);
     if (!destination) {
       return;
     }
     const reorder = (list: any, startIndex: any, endIndex: any) => {
-      console.log('list', list)
       const [removed] = list.splice(startIndex, 1);
       list.splice(endIndex, 0, removed);
 
@@ -83,6 +80,7 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...prop
       setPreviewImage(image);
     });
   };
+  const grid = 8
   const uploadButton = (
     <div>
       <PlusOutlined />
@@ -90,36 +88,28 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...prop
     </div>
   );
 
-  const grid = 8
   const getListStyle = (isDraggingOver: boolean) => ({
     background: isDraggingOver ? 'lightblue' : 'lightgrey',
     display: 'flex',
-    padding: grid,
+    padding: grid *2,
     overflow: 'auto',
   });
   const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: 'none',
-    padding: grid * 2,
-    margin: `0 ${grid}px 0 0`,
-
+    padding: 0,
+    margin: '0 4px',
+    height: 104,
+    width: 104,
     // change background colour if dragging
-    background: isDragging ? 'lightgreen' : 'grey',
+    background: isDragging ? 'lightgreen' : 'white',
 
     // styles we need to apply on draggables
     ...draggableStyle,
   });
 
   return (
-    <>
-      <Upload
-        {...props}
-        fileList={fileList}
-        showUploadList={false}
-        onChange={onChange}
-      >
-        {fileList.length >= 8 ? null : uploadButton}
-      </Upload>
+    <div>
       {fileList && (
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="droppable" direction='horizontal'>
@@ -152,11 +142,20 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...prop
                           onPreview={onPreview}
                           onRemove={onRemove}
                           items={[item]}
-                        />
+                        >
+                        </UploadList>
                       </div>
                     )}
                   </Draggable>
                 ))}
+                <Upload
+                  {...props}
+                  fileList={fileList}
+                  showUploadList={false}
+                  onChange={onChange}
+                >
+                  {fileList.length >= 8 ? null : uploadButton}
+                </Upload>
                 {provided.placeholder}
               </div>
             )}
@@ -171,7 +170,7 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...prop
       >
         <img style={{ width: "100%" }} alt="" src={previewImage} />
       </Modal>
-    </>
+    </div>
   );
 });
 
