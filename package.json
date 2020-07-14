@@ -10,7 +10,8 @@
   "main": "index.js",
   "devDependencies": {
     "react-scripts": "1.0.0",
-    "typescript": "^3.8.2"
+    "typescript": "^3.8.2",
+    "@types/react-beautiful-dnd": "13.0.0"
   },
   "dependencies": {
     "@ant-design/icons": "latest",
