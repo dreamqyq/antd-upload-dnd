@@ -57,7 +57,7 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...prop
 
     return result;
   };
-
+  
   const onDragEnd = ({ source, destination }: any) => {
     if (!destination) {
       return;
