@@ -31,7 +31,7 @@ const App = () => {
     }
   ])
 
-  const handleChange = ({ fileList }) => setFileList({ fileList });
+  const handleChange = (newFileList) => setFileList(newFileList);
 
 
   return (

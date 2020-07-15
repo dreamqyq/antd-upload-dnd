@@ -29,46 +29,42 @@ const imagePreview = async (file: UploadFile, callback: (params: Params) => void
   });
 };
 
-function cloneDeep(obj: object) {
-  const objStr = JSON.stringify(obj);
-  return JSON.parse(objStr);
-}
-
 type Props = {
   onChange: any,
-  fileList?: any[],
+  fileList: any[],
   listType: any
 }
 const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...props }) => {
-  const [fileList, setFileList] = useState(props.fileList || []);
   const [previewImage, setPreviewImage] = useState('');
+  const { fileList } = props;
   console.log(fileList)
 
   const onChange = ({ fileList }: any) => {
-    setFileList(fileList);
-    onChangeInitial({ fileList });
+    onChangeInitial(fileList);
   };
 
   const onRemove = (file: any) => {
-    const newFileList = cloneDeep(fileList).filter(
+    const newFileList = fileList.filter(
       (item: any) => item.uid !== file.uid
     );
     onChange({ fileList: newFileList });
+  };
+
+  const reorder = (list: any[], startIndex: any, endIndex: any) => {
+    const result = Array.from(list)
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
   };
 
   const onDragEnd = ({ source, destination }: any) => {
     if (!destination) {
       return;
     }
-    const reorder = (list: any, startIndex: any, endIndex: any) => {
-      const [removed] = list.splice(startIndex, 1);
-      list.splice(endIndex, 0, removed);
-
-      return list;
-    };
 
     const newFileList = reorder(
-      cloneDeep(fileList),
+      fileList,
       source.index,
       destination.index
     );
@@ -91,7 +87,7 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...prop
   const getListStyle = (isDraggingOver: boolean) => ({
     background: isDraggingOver ? 'lightblue' : 'lightgrey',
     display: 'flex',
-    padding: grid *2,
+    padding: grid * 2,
     overflow: 'auto',
   });
   const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
@@ -109,7 +105,7 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...prop
   });
 
   return (
-    <div>
+    <>
       {fileList && (
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="droppable" direction='horizontal'>
@@ -170,7 +166,7 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...prop
       >
         <img style={{ width: "100%" }} alt="" src={previewImage} />
       </Modal>
-    </div>
+    </>
   );
 });
 
