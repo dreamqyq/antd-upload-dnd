@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
 import { PicturesWall } from './PicturesWall.tsx'
+import Demo from './demo'
+import DndDemo from './dnd-demo'
 
 const App = () => {
   const [fileList, setFileList] = useState([
@@ -44,4 +46,5 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById("container"));
+
+ReactDOM.render(<DndDemo />, document.getElementById("container"));
