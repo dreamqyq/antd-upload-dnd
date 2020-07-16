@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import { PicturesWall } from './PicturesWall';
 import { UploadFile } from 'antd/lib/upload/interface';
+import { PlusOutlined } from '@ant-design/icons/lib';
 
 const App = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([
@@ -40,6 +41,12 @@ const App = () => {
     }
   ]);
 
+  const uploadButton = (
+    <div>
+      <PlusOutlined />
+      <div className="ant-upload-text">Upload</div>
+    </div>
+  );
   const handleChange = ({ fileList }: { fileList: UploadFile[] }) => setFileList(fileList);
 
 
@@ -49,7 +56,9 @@ const App = () => {
       listType="picture-card"
       fileList={fileList}
       onChange={handleChange}
-    />
+    >
+      {fileList.length >= 9 ? null : uploadButton}
+    </PicturesWall>
   );
 };
 

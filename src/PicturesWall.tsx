@@ -1,7 +1,6 @@
 import React, { CSSProperties, memo, useState } from 'react';
 import UploadList from 'antd/es/upload/UploadList';
 import { UploadFile } from 'antd/es/upload/interface';
-import { PlusOutlined } from '@ant-design/icons';
 import { Modal, Upload } from 'antd';
 import {
   DragDropContext,
@@ -95,12 +94,6 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onFileChange, ...props }
       setPreviewImage(image);
     });
   };
-  const uploadButton = (
-    <div>
-      <PlusOutlined />
-      <div className="ant-upload-text">Upload</div>
-    </div>
-  );
 
   return (
     <>
@@ -148,7 +141,7 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onFileChange, ...props }
                   showUploadList={false}
                   onChange={onChange}
                 >
-                  {fileList.length >= 8 ? null : uploadButton}
+                  {props.children}
                 </Upload>
                 {provided.placeholder}
               </div>
