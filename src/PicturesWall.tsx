@@ -34,13 +34,30 @@ const imagePreview = async (file: UploadFile, callback: (params: { image: string
   });
 };
 
+
+const grid = 8;
+const getListStyle = (isDraggingOver: boolean) => ({
+  background: isDraggingOver ? 'lightblue' : 'lightgrey',
+  display: 'flex',
+  padding: grid * 2,
+  overflow: 'auto',
+});
+const getItemStyle = (isDragging: boolean, draggableStyle: DraggingStyle | NotDraggingStyle | undefined): CSSProperties => ({
+  userSelect: 'none',
+  padding: 0,
+  margin: '0 4px',
+  height: 104,
+  width: 104,
+  background: isDragging ? 'lightgreen' : 'white',
+  ...draggableStyle,
+});
+
 type Props = {
   onFileChange: (fileList: UploadFile[]) => void
 } & UploadProps
 const PicturesWall: React.FC<Props> = memo(({ onFileChange, ...props }) => {
   const [previewImage, setPreviewImage] = useState('');
   const fileList = props.fileList || [];
-  console.log(fileList);
 
   type ChangeParams = {
     fileList: UploadFile[]
@@ -82,29 +99,12 @@ const PicturesWall: React.FC<Props> = memo(({ onFileChange, ...props }) => {
       setPreviewImage(image);
     });
   };
-  const grid = 8;
   const uploadButton = (
     <div>
       <PlusOutlined />
       <div className="ant-upload-text">Upload</div>
     </div>
   );
-
-  const getListStyle = (isDraggingOver: boolean) => ({
-    background: isDraggingOver ? 'lightblue' : 'lightgrey',
-    display: 'flex',
-    padding: grid * 2,
-    overflow: 'auto',
-  });
-  const getItemStyle = (isDragging: boolean, draggableStyle: DraggingStyle | NotDraggingStyle | undefined): CSSProperties => ({
-    userSelect: 'none',
-    padding: 0,
-    margin: '0 4px',
-    height: 104,
-    width: 104,
-    background: isDragging ? 'lightgreen' : 'white',
-    ...draggableStyle,
-  });
 
   return (
     <>
