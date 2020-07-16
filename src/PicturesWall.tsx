@@ -1,9 +1,17 @@
-import React, { memo, useState } from "react";
-import UploadList from "antd/es/upload/UploadList";
+import React, { CSSProperties, memo, useState } from 'react';
+import UploadList from 'antd/es/upload/UploadList';
 import { UploadFile } from 'antd/es/upload/interface';
-import { PlusOutlined } from "@ant-design/icons";
-import { Upload, Modal } from "antd";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { PlusOutlined } from '@ant-design/icons';
+import { Modal, Upload } from 'antd';
+import {
+  DragDropContext,
+  Draggable,
+  DraggingStyle,
+  Droppable,
+  DropResult,
+  NotDraggingStyle
+} from 'react-beautiful-dnd';
+import { UploadProps } from 'antd/lib/upload';
 
 const getBase64 = (file: File | Blob | undefined): Promise<string> => {
   if (!file) return Promise.reject(new Error('no file'));
@@ -15,10 +23,7 @@ const getBase64 = (file: File | Blob | undefined): Promise<string> => {
   });
 };
 
-type Params = {
-  image: string;
-};
-const imagePreview = async (file: UploadFile, callback: (params: Params) => void) => {
+const imagePreview = async (file: UploadFile, callback: (params: { image: string }) => void) => {
   const newFile = file;
   if (!newFile.url && !newFile.preview) {
     newFile.preview = await getBase64(file.originFileObj);
@@ -30,35 +35,36 @@ const imagePreview = async (file: UploadFile, callback: (params: Params) => void
 };
 
 type Props = {
-  onChange: any,
-  fileList: any[],
-  listType: any
-}
-const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...props }) => {
+  onFileChange: (fileList: UploadFile[]) => void
+} & UploadProps
+const PicturesWall: React.FC<Props> = memo(({ onFileChange, ...props }) => {
   const [previewImage, setPreviewImage] = useState('');
-  const { fileList } = props;
-  console.log(fileList)
+  const fileList = props.fileList || [];
+  console.log(fileList);
 
-  const onChange = ({ fileList }: any) => {
-    onChangeInitial(fileList);
+  type ChangeParams = {
+    fileList: UploadFile[]
+  }
+  const onChange = ({ fileList }: ChangeParams) => {
+    onFileChange(fileList);
   };
 
-  const onRemove = (file: any) => {
+  const onRemove = (file: UploadFile) => {
     const newFileList = fileList.filter(
-      (item: any) => item.uid !== file.uid
+      (item) => item.uid !== file.uid
     );
     onChange({ fileList: newFileList });
   };
 
-  const reorder = (list: any[], startIndex: any, endIndex: any) => {
-    const result = Array.from(list)
+  const reorder = (list: UploadFile[], startIndex: number, endIndex: number) => {
+    const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
 
     return result;
   };
-  
-  const onDragEnd = ({ source, destination }: any) => {
+
+  const onDragEnd = ({ source, destination }: DropResult) => {
     if (!destination) {
       return;
     }
@@ -71,12 +77,12 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...prop
     onChange({ fileList: newFileList });
   };
 
-  const onPreview = async (file: any) => {
+  const onPreview = async (file: UploadFile) => {
     await imagePreview(file, ({ image }) => {
       setPreviewImage(image);
     });
   };
-  const grid = 8
+  const grid = 8;
   const uploadButton = (
     <div>
       <PlusOutlined />
@@ -90,17 +96,13 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...prop
     padding: grid * 2,
     overflow: 'auto',
   });
-  const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
-    // some basic styles to make the items look a bit nicer
+  const getItemStyle = (isDragging: boolean, draggableStyle: DraggingStyle | NotDraggingStyle | undefined): CSSProperties => ({
     userSelect: 'none',
     padding: 0,
     margin: '0 4px',
     height: 104,
     width: 104,
-    // change background colour if dragging
     background: isDragging ? 'lightgreen' : 'white',
-
-    // styles we need to apply on draggables
     ...draggableStyle,
   });
 
@@ -164,10 +166,10 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onChangeInitial, ...prop
         footer={null}
         onCancel={() => setPreviewImage('')}
       >
-        <img style={{ width: "100%" }} alt="" src={previewImage} />
+        <img style={{ width: '100%' }} alt="" src={previewImage} />
       </Modal>
     </>
   );
 });
 
-export { PicturesWall }
+export { PicturesWall };

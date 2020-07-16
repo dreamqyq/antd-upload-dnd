@@ -19,7 +19,18 @@
   resolved "https://registry.npm.taobao.org/@ant-design/icons-svg/download/@ant-design/icons-svg-4.1.0.tgz#480b025f4b20ef7fe8f47d4a4846e4fee84ea06c"
   integrity sha1-SAsCX0sg73/o9H1KSEbk/uhOoGw=
 
-"@ant-design/icons@^4.2.1", "@ant-design/icons@latest":
+"@ant-design/icons@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/@ant-design/icons/-/icons-4.0.0.tgz#cdb870777f185422cfc0e235392592d3e4795ef6"
+  integrity sha512-oJTNTyo/6DjVmK/DSa58A+7gZRGgzBCAEJ9Pfa6U+BAZO28tvOE3YzlQd9gq9Qu6d47JL1ixyID3qsmRFqitlQ==
+  dependencies:
+    "@ant-design/colors" "^3.1.0"
+    "@ant-design/icons-svg" "^4.0.0"
+    classnames "^2.2.6"
+    insert-css "^2.0.0"
+    rc-util "^4.9.0"
+
+"@ant-design/icons@^4.2.1":
   version "4.2.1"
   resolved "https://registry.npm.taobao.org/@ant-design/icons/download/@ant-design/icons-4.2.1.tgz#6f3ea5d98ab782072e4e9cbb70f25e4403ae1a6b"
   integrity sha1-bz6l2Yq3ggcuTpy7cPJeRAOuGms=
@@ -1579,10 +1590,17 @@
   resolved "https://registry.npm.taobao.org/@types/q/download/@types/q-1.5.4.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fq%2Fdownload%2F%40types%2Fq-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha1-FZJUFOCtLNdlv+9YhC9+JqesyyQ=
 
-"@types/react-beautiful-dnd@13.0.0":
-  version "13.0.0"
-  resolved "https://registry.npmjs.org/@types/react-beautiful-dnd/-/react-beautiful-dnd-13.0.0.tgz#e60d3d965312fcf1516894af92dc3e9249587db4"
-  integrity sha512-by80tJ8aTTDXT256Gl+RfLRtFjYbUWOnZuEigJgNsJrSEGxvFe5eY6k3g4VIvf0M/6+xoLgfYWoWonlOo6Wqdg==
+"@types/react-beautiful-dnd@10.0.0":
+  version "10.0.0"
+  resolved "https://registry.npmjs.org/@types/react-beautiful-dnd/-/react-beautiful-dnd-10.0.0.tgz#3b85e4fcdb6540577871049ea982f380947eb6a6"
+  integrity sha512-Q98xBFJMdS1krMMMkTZPxQZffV6cAe4YihFtRBYTj2rUnBf9WcSmlYTjAtGlwp51fwZgaeGW7j/imr5mhrfTKA==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-dom@16.9.8":
+  version "16.9.8"
+  resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-16.9.8.tgz#fe4c1e11dfc67155733dfa6aa65108b4971cb423"
+  integrity sha512-ykkPQ+5nFknnlU6lDd947WbQ6TE3NNzbQAkInC2EKY1qeYdTKp7onFusmYZb+ityzx2YviqT6BXSu+LyWWJwcA==
   dependencies:
     "@types/react" "*"
 
@@ -1590,6 +1608,14 @@
   version "16.9.43"
   resolved "https://registry.npmjs.org/@types/react/-/react-16.9.43.tgz#c287f23f6189666ee3bebc2eb8d0f84bcb6cdb6b"
   integrity sha512-PxshAFcnJqIWYpJbLPriClH53Z2WlJcVZE+NP2etUtWQs2s7yIMj3/LDKZT/5CHJ/F62iyjVCDu2H3jHEXIxSg==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
+"@types/react@16.9.8":
+  version "16.9.8"
+  resolved "https://registry.npmjs.org/@types/react/-/react-16.9.8.tgz#6b01592193213263300f8b242a08b172cc49f63f"
+  integrity sha512-FlifFL8nuWkLqXG3F7UhjglhlONeIUbt+PZOz3fUEba85azJwXGxR18WYnOUfaLW6jt7fMykYO9TTM980em34A==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -1855,6 +1881,13 @@ acorn@^7.1.1:
   version "7.3.1"
   resolved "https://registry.npm.taobao.org/acorn/download/acorn-7.3.1.tgz?cache=0&sync_timestamp=1591869398104&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Facorn%2Fdownload%2Facorn-7.3.1.tgz#85010754db53c3fbaf3b9ea3e083aa5c5d147ffd"
   integrity sha1-hQEHVNtTw/uvO56j4IOqXF0Uf/0=
+
+add-dom-event-listener@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/add-dom-event-listener/-/add-dom-event-listener-1.1.0.tgz#6a92db3a0dd0abc254e095c0f1dc14acbbaae310"
+  integrity sha512-WCxx1ixHT0GQU9hb0KI/mhgRQhnU+U3GvwY6ZvVjYq8rsihIGoaIOUbY0yMPBxLH5MDtr0kz3fisWGNcbWW7Jw==
+  dependencies:
+    object-assign "4.x"
 
 address@1.1.2, address@^1.0.1:
   version "1.1.2"
@@ -7198,9 +7231,9 @@ oauth-sign@~0.9.0:
   resolved "https://registry.npm.taobao.org/oauth-sign/download/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
   integrity sha1-R6ewFrqmi1+g7PPe4IqFxnmsZFU=
 
-object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
+object-assign@4.x, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
-  resolved "https://registry.npm.taobao.org/object-assign/download/object-assign-4.1.1.tgz?cache=0&sync_timestamp=1571657171505&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fobject-assign%2Fdownload%2Fobject-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
+  resolved "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
 
 object-copy@^0.1.0:
@@ -8504,10 +8537,10 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
-  resolved "https://registry.npm.taobao.org/prop-types/download/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
-  integrity sha1-UsQedbjIfnK52TYOAga5ncv/psU=
+  resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
+  integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
   dependencies:
     loose-envify "^1.4.0"
     object-assign "^4.1.1"
@@ -8965,6 +8998,17 @@ rc-upload@~3.2.0:
   dependencies:
     classnames "^2.2.5"
 
+rc-util@^4.9.0:
+  version "4.21.1"
+  resolved "https://registry.npmjs.org/rc-util/-/rc-util-4.21.1.tgz#88602d0c3185020aa1053d9a1e70eac161becb05"
+  integrity sha512-Z+vlkSQVc1l8O2UjR3WQ+XdWlhj5q9BMQNLk2iOBch75CqPfrJyGtcWMcnhRlNuDu0Ndtt4kLVO8JI8BrABobg==
+  dependencies:
+    add-dom-event-listener "^1.1.0"
+    prop-types "^15.5.10"
+    react-is "^16.12.0"
+    react-lifecycles-compat "^3.0.4"
+    shallowequal "^1.1.0"
+
 rc-util@^5.0.0, rc-util@^5.0.1:
   version "5.0.5"
   resolved "https://registry.npm.taobao.org/rc-util/download/rc-util-5.0.5.tgz?cache=0&sync_timestamp=1593791674774&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frc-util%2Fdownload%2Frc-util-5.0.5.tgz#d29d626edc931fbf8b45b4aa48fb9e44ce2300bd"
@@ -9058,7 +9102,7 @@ react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-i
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.13.1.tgz?cache=0&sync_timestamp=1592589350363&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-is%2Fdownload%2Freact-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=
 
-react-lifecycles-compat@^3.0.0:
+react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==

@@ -9,12 +9,13 @@
   "name": "antd-upload-dnd",
   "main": "index.js",
   "devDependencies": {
-    "react-scripts": "1.0.0",
     "typescript": "^3.8.2",
-    "@types/react-beautiful-dnd": "13.0.0"
+    "@types/react-beautiful-dnd": "10.0.0",
+    "@types/react-dom": "16.9.8",
+    "@types/react": "16.9.8"
   },
   "dependencies": {
-    "@ant-design/icons": "latest",
+    "@ant-design/icons": "4.0.0",
     "antd": "4.4.2",
     "react": "^16.12.0",
     "react-beautiful-dnd": "10.0.0",
@@ -28,5 +29,5 @@
     "not op_mini all"
   ],
   "keywords": [],
-  "description": null
+  "description": ""
 }
