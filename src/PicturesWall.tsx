@@ -11,7 +11,7 @@ import {
   DropResult,
   NotDraggingStyle
 } from 'react-beautiful-dnd';
-import { UploadProps } from 'antd/lib/upload';
+import { UploadChangeParam, UploadProps } from 'antd/lib/upload';
 
 const getBase64 = (file: File | Blob | undefined): Promise<string> => {
   if (!file) return Promise.reject(new Error('no file'));
@@ -51,26 +51,22 @@ const getItemStyle = (isDragging: boolean, draggableStyle: DraggingStyle | NotDr
   background: isDragging ? 'lightgreen' : 'white',
   ...draggableStyle,
 });
-
 type Props = {
-  onFileChange: (fileList: UploadFile[]) => void
+  onChange: (params: { fileList: UploadFile[] }) => void
 } & UploadProps
-const PicturesWall: React.FC<Props> = memo(({ onFileChange, ...props }) => {
+const PicturesWall: React.FC<Props> = memo(({ onChange: onFileChange, ...props }) => {
   const [previewImage, setPreviewImage] = useState('');
   const fileList = props.fileList || [];
 
-  type ChangeParams = {
-    fileList: UploadFile[]
-  }
-  const onChange = ({ fileList }: ChangeParams) => {
-    onFileChange(fileList);
+  const onChange = ({ fileList }: UploadChangeParam) => {
+    onFileChange({ fileList });
   };
 
   const onRemove = (file: UploadFile) => {
     const newFileList = fileList.filter(
       (item) => item.uid !== file.uid
     );
-    onChange({ fileList: newFileList });
+    onFileChange({ fileList: newFileList });
   };
 
   const reorder = (list: UploadFile[], startIndex: number, endIndex: number) => {
@@ -91,7 +87,7 @@ const PicturesWall: React.FC<Props> = memo(({ onFileChange, ...props }) => {
       source.index,
       destination.index
     );
-    onChange({ fileList: newFileList });
+    onFileChange({ fileList: newFileList });
   };
 
   const onPreview = async (file: UploadFile) => {

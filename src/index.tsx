@@ -40,7 +40,7 @@ const App = () => {
     }
   ]);
 
-  const handleChange = (newFileList: UploadFile[]) => setFileList(newFileList);
+  const handleChange = ({ fileList }: { fileList: UploadFile[] }) => setFileList(fileList);
 
 
   return (
@@ -48,7 +48,7 @@ const App = () => {
       action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       listType="picture-card"
       fileList={fileList}
-      onFileChange={handleChange}
+      onChange={handleChange}
     />
   );
 };
