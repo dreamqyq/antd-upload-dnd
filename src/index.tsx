@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
+import './picturWall.css'
 import { PicturesWall } from './PicturesWall';
 import { UploadFile } from 'antd/lib/upload/interface';
 import { PlusOutlined } from '@ant-design/icons/lib';

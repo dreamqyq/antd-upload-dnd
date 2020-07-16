@@ -35,19 +35,20 @@ const imagePreview = async (file: UploadFile, callback: (params: { image: string
 
 
 const grid = 8;
-const getListStyle = (isDraggingOver: boolean) => ({
-  background: isDraggingOver ? 'lightblue' : 'lightgrey',
+const getListStyle = (isDraggingOver: boolean): CSSProperties => ({
+  background: isDraggingOver ? 'lightblue' : '#f9f9f9',
   display: 'flex',
+  flexWrap: 'wrap',
   padding: grid * 2,
   overflow: 'auto',
 });
 const getItemStyle = (isDragging: boolean, draggableStyle: DraggingStyle | NotDraggingStyle | undefined): CSSProperties => ({
   userSelect: 'none',
   padding: 0,
-  margin: '0 4px',
+  margin: 4,
   height: 104,
   width: 104,
-  background: isDragging ? 'lightgreen' : 'white',
+  background: isDragging ? 'lightgreen' : '#f9f9f9',
   ...draggableStyle,
 });
 type Props = {
@@ -140,6 +141,7 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onFileChange, ...props }
                   fileList={fileList}
                   showUploadList={false}
                   onChange={onChange}
+                  data-fuck="hhhh"
                 >
                   {props.children}
                 </Upload>
