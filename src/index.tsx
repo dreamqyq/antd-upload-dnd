@@ -4,42 +4,10 @@ import 'antd/dist/antd.css';
 import { PicturesWall } from './PicturesWall';
 import { UploadFile } from 'antd/lib/upload/interface';
 import { PlusOutlined } from '@ant-design/icons/lib';
+import defaultFileList from './defaultFileList';
 
 const App = () => {
-  const [fileList, setFileList] = useState<UploadFile[]>([
-    {
-      uid: '-1',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      size: 1,
-      type: 'image/jpeg'
-    },
-    {
-      uid: '-2',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      size: 1,
-      type: 'image/jpeg'
-    },
-    {
-      uid: '-3',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      size: 1,
-      type: 'image/jpeg'
-    },
-    {
-      uid: '-4',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      size: 1,
-      type: 'image/jpeg'
-    }
-  ]);
+  const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList);
 
   const uploadButton = (
     <div>
