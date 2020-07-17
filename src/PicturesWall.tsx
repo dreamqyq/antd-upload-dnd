@@ -104,14 +104,13 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onFileChange, ...props }
                         )}
                       >
                         <UploadList
-                          locale={{}}
+                          locale={{previewFile: '预览图片', removeFile: '删除图片'}}
                           showDownloadIcon={false}
                           listType={props.listType}
                           onPreview={onPreview}
                           onRemove={onRemove}
                           items={[item]}
-                        >
-                        </UploadList>
+                        />
                       </div>
                     )}
                   </Draggable>
@@ -121,7 +120,6 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onFileChange, ...props }
                   fileList={fileList}
                   showUploadList={false}
                   onChange={onChange}
-                  data-fuck="hhhh"
                 >
                   {props.children}
                 </Upload>
