@@ -5,8 +5,10 @@
 
 ## 预览
 - `react-beautiful-dnd`
+    
     ![预览](https://i.loli.net/2020/07/16/sFeBCEScNxJQ47w.gif)
 - `react-sortable-hoc`
+    
     ![预览](https://s1.ax1x.com/2020/07/17/Uy5hdK.gif)
     
 ## 技术栈
