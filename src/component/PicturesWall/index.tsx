@@ -132,9 +132,9 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onFileChange, ...props }
       )}
       <Modal
         visible={!!previewImage}
-        width="60%"
         footer={null}
         onCancel={() => setPreviewImage('')}
+        bodyStyle={{ padding: 0 }}
       >
         <img style={{ width: '100%' }} alt="" src={previewImage} />
       </Modal>
