@@ -3,7 +3,7 @@ import { arrayMove, SortableContainer, SortableElement, SortEnd } from 'react-so
 import './pictureGrid.css';
 import { UploadFile } from 'antd/es/upload/interface';
 import { UploadChangeParam, UploadProps } from 'antd/lib/upload';
-import { imagePreview } from './pictureUtil';
+import { imagePreview } from '../../util/pictureUtil';
 import UploadList from 'antd/es/upload/UploadList';
 import { Modal, Upload } from 'antd';
 

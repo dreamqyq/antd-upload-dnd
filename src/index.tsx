@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import './picturWall.css';
 import { UploadFile } from 'antd/lib/upload/interface';
 import { PlusOutlined } from '@ant-design/icons/lib';
-import defaultFileList from './defaultFileList';
-import { PicturesGrid } from './PicturesGrid';
-import { PicturesWall } from './PicturesWall';
+import defaultFileList from './util/defaultFileList';
+import { PicturesGrid } from './component/PicturesGrid';
+import { PicturesWall } from './component/PicturesWall';
 
 const App = () => {
   const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList);
@@ -14,7 +13,7 @@ const App = () => {
   const uploadButton = (
     <div>
       <PlusOutlined />
-      <div className="ant-upload-text">Upload</div>
+      <div>Upload</div>
     </div>
   );
   const handleChange = ({ fileList }: { fileList: UploadFile[] }) => setFileList(fileList);
@@ -22,6 +21,7 @@ const App = () => {
 
   return (
     <>
+      <h2>基于 react-beautiful-dnd 的版本</h2>
       <PicturesWall
         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
         listType="picture-card"
@@ -31,6 +31,7 @@ const App = () => {
         {fileList.length >= 9 ? null : uploadButton}
       </PicturesWall>
       <hr style={{margin: '50px 0'}}/>
+      <h2>基于 react-sortable-hoc 的版本</h2>
       <PicturesGrid
         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
         listType="picture-card"

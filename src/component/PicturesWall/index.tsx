@@ -1,5 +1,6 @@
 import React, { CSSProperties, memo, useState } from 'react';
 import UploadList from 'antd/es/upload/UploadList';
+import './picturWall.css';
 import { UploadFile } from 'antd/es/upload/interface';
 import { Modal, Upload } from 'antd';
 import {
@@ -11,7 +12,7 @@ import {
   NotDraggingStyle
 } from 'react-beautiful-dnd';
 import { UploadChangeParam, UploadProps } from 'antd/lib/upload';
-import { imagePreview } from './pictureUtil';
+import { imagePreview } from '../../util/pictureUtil';
 
 
 const grid = 8;
@@ -104,7 +105,7 @@ const PicturesWall: React.FC<Props> = memo(({ onChange: onFileChange, ...props }
                         )}
                       >
                         <UploadList
-                          locale={{previewFile: '预览图片', removeFile: '删除图片'}}
+                          locale={{ previewFile: '预览图片', removeFile: '删除图片' }}
                           showDownloadIcon={false}
                           listType={props.listType}
                           onPreview={onPreview}
