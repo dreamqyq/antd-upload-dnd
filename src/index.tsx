@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import './picturWall.css'
+import './picturWall.css';
 import { PicturesWall } from './PicturesWall';
 import { UploadFile } from 'antd/lib/upload/interface';
 import { PlusOutlined } from '@ant-design/icons/lib';
 import defaultFileList from './defaultFileList';
+import { SortableComponent } from './PicturesGrid';
 
 const App = () => {
   const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList);
@@ -32,4 +33,4 @@ const App = () => {
 };
 
 
-ReactDOM.render(<App />, document.getElementById('container'));
+ReactDOM.render(<SortableComponent />, document.getElementById('container'));
