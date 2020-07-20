@@ -56,7 +56,11 @@ const PicturesGrid: React.FC<Props> = memo(({ onChange: onFileChange, ...props }
   ));
 
 
-  const listStyle: CSSProperties = { display: 'flex', flexWrap: 'wrap', maxWidth: 720 };
+  const listStyle: CSSProperties = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    maxWidth: '400px',
+  };
   const SortableList = SortableContainer(({ items }: { items: UploadFile[] }) => (
     <div style={listStyle}>
       {items.map((item, index) => (
