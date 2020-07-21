@@ -2,19 +2,65 @@ import React, { CSSProperties, memo, useState } from 'react';
 import { arrayMove, SortableContainer, SortableElement, SortEnd } from 'react-sortable-hoc';
 import './pictureGrid.css';
 import { UploadFile } from 'antd/es/upload/interface';
-import { UploadChangeParam, UploadProps } from 'antd/lib/upload';
+import { UploadChangeParam } from 'antd/lib/upload';
 import { imagePreview } from '../../util/pictureUtil';
 import UploadList from 'antd/es/upload/UploadList';
 import { Modal, Upload } from 'antd';
+import { Props, SortableItemParams, SortableListParams } from './types';
 
-type Props = {
-  onChange: (params: { fileList: UploadFile[] }) => void
-} & UploadProps
+
+const itemStyle: CSSProperties = {
+  width: 104,
+  height: 104,
+  margin: 4,
+  cursor: 'grab'
+};
+const SortableItem = SortableElement((params: SortableItemParams) => (
+  <div style={itemStyle}>
+    <UploadList
+      locale={{ previewFile: '预览图片', removeFile: '删除图片' }}
+      showDownloadIcon={false}
+      listType={params.props.listType}
+      onPreview={params.onPreview}
+      onRemove={params.onRemove}
+      items={[params.item]}
+    />
+  </div>
+));
+
+
+const listStyle: CSSProperties = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  maxWidth: '80%',
+};
+const SortableList = SortableContainer((params: SortableListParams) => {
+  return (
+    <div style={listStyle}>
+      {params.items.map((item: any, index: any) => (
+        <SortableItem
+          key={`${item.uid}`}
+          index={index}
+          item={item}
+          props={params.props}
+          onPreview={params.onPreview}
+          onRemove={params.onRemove}
+        />
+      ))}
+      <Upload
+        {...params.props}
+        showUploadList={false}
+        onChange={params.onChange}
+      >
+        {params.props.children}
+      </Upload>
+    </div>
+  );
+});
+
 const PicturesGrid: React.FC<Props> = memo(({ onChange: onFileChange, ...props }) => {
   const [previewImage, setPreviewImage] = useState('');
   const fileList = props.fileList || [];
-  console.log(fileList);
-
   const onSortEnd = ({ oldIndex, newIndex }: SortEnd) => {
     onFileChange({ fileList: arrayMove(fileList, oldIndex, newIndex) });
   };
@@ -36,50 +82,6 @@ const PicturesGrid: React.FC<Props> = memo(({ onChange: onFileChange, ...props }
     });
   };
 
-  const itemStyle: CSSProperties = {
-    width: 104,
-    height: 104,
-    margin: 4,
-    cursor: 'grab'
-  };
-  const SortableItem = SortableElement(({ item }: { item: UploadFile }) => (
-    <div style={itemStyle}>
-      <UploadList
-        locale={{ previewFile: '预览图片', removeFile: '删除图片' }}
-        showDownloadIcon={false}
-        listType={props.listType}
-        onPreview={onPreview}
-        onRemove={onRemove}
-        items={[item]}
-      />
-    </div>
-  ));
-
-
-  const listStyle: CSSProperties = {
-    display: 'flex',
-    flexWrap: 'wrap',
-    maxWidth: '400px',
-  };
-  const SortableList = SortableContainer(({ items }: { items: UploadFile[] }) => (
-    <div style={listStyle}>
-      {items.map((item, index) => (
-        <SortableItem
-          key={`${item.uid}`}
-          index={index}
-          item={item}
-        />
-      ))}
-      <Upload
-        {...props}
-        fileList={fileList}
-        showUploadList={false}
-        onChange={onChange}
-      >
-        {props.children}
-      </Upload>
-    </div>
-  ));
 
   return (
     <>
@@ -90,6 +92,10 @@ const PicturesGrid: React.FC<Props> = memo(({ onChange: onFileChange, ...props }
         onSortEnd={onSortEnd}
         axis="xy"
         helperClass="SortableHelper"
+        props={props}
+        onChange={onChange}
+        onRemove={onRemove}
+        onPreview={onPreview}
       />
       <Modal
         visible={!!previewImage}

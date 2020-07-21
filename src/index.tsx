@@ -21,25 +21,29 @@ const App = () => {
 
   return (
     <>
-      <h2>基于 react-beautiful-dnd 的版本</h2>
-      <PicturesWall
-        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-        listType="picture-card"
-        fileList={fileList}
-        onChange={handleChange}
-      >
-        {fileList.length >= 9 ? null : uploadButton}
-      </PicturesWall>
+      <div>
+        <h2>基于 react-beautiful-dnd 的版本</h2>
+        <PicturesWall
+          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          listType="picture-card"
+          fileList={fileList}
+          onChange={handleChange}
+        >
+          {fileList.length >= 9 ? null : uploadButton}
+        </PicturesWall>
+      </div>
       <hr style={{ margin: '50px 0' }} />
-      <h2>基于 react-sortable-hoc 的版本</h2>
-      <PicturesGrid
-        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-        listType="picture-card"
-        fileList={fileList}
-        onChange={handleChange}
-      >
-        {fileList.length >= 9 ? null : uploadButton}
-      </PicturesGrid>
+      <div style={{ width: '50%' }}>
+        <h2>基于 react-sortable-hoc 的版本</h2>
+        <PicturesGrid
+          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          listType="picture-card"
+          fileList={fileList}
+          onChange={handleChange}
+        >
+          {fileList.length >= 9 ? null : uploadButton}
+        </PicturesGrid>
+      </div>
     </>
   );
 };
