@@ -32,12 +32,12 @@ const SortableItem = SortableElement((params: SortableItemParams) => (
 const listStyle: CSSProperties = {
   display: 'flex',
   flexWrap: 'wrap',
-  maxWidth: '80%',
+  maxWidth: '100%',
 };
 const SortableList = SortableContainer((params: SortableListParams) => {
   return (
     <div style={listStyle}>
-      {params.items.map((item: any, index: any) => (
+      {params.items.map((item, index) => (
         <SortableItem
           key={`${item.uid}`}
           index={index}
@@ -65,8 +65,8 @@ const PicturesGrid: React.FC<Props> = memo(({ onChange: onFileChange, ...props }
     onFileChange({ fileList: arrayMove(fileList, oldIndex, newIndex) });
   };
 
-  const onChange = ({ fileList }: UploadChangeParam) => {
-    onFileChange({ fileList });
+  const onChange = ({ fileList: newFileList }: UploadChangeParam) => {
+    onFileChange({ fileList: newFileList });
   };
 
   const onRemove = (file: UploadFile) => {
