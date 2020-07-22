@@ -3,6 +3,9 @@
 - 基于 `react-beautiful-dnd` 实现的版本，可实现图片在同一行的拖拽排序效果，但是如果图片过多导致换行，该版本的效果就不尽如人意。
 - 基于 `react-sortable-hoc` 实现的版本，可实现图片多行展示的拖拽排序效果，但是在具体细节方面的效果不如 `react-beautiful-dnd`。
 
+## 相关博客
+https://www.jianshu.com/p/29cfa830d478
+
 ## 预览
 - `react-beautiful-dnd`
     
