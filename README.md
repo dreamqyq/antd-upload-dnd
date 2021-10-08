@@ -12,7 +12,7 @@ https://www.jianshu.com/p/29cfa830d478
     ![预览](https://i.loli.net/2020/07/16/sFeBCEScNxJQ47w.gif)
 - `react-sortable-hoc`
     
-    ![预览](https://s1.ax1x.com/2020/07/17/Uy5hdK.gif)
+    ![预览](./final.gif)
     
 ## 技术栈
 - 图片上传组件基于 [ant-design](https://github.com/ant-design/ant-design) 的 upload 组件。
